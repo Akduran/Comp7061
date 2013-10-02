@@ -1,0 +1,10 @@
+// Bank.idl
+#include "Account.idl"
+
+module lab4 {
+  interface Bank {
+    readonly attribute string name;  // name of bank
+    Account createAccount(in string name, in AccountType type);
+  };
+}; 
+

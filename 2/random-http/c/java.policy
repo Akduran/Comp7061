@@ -1,0 +1,9 @@
+// java.policy
+grant {
+  permission java.net.SocketPermission 
+    "*:1024-",    // host:port
+    "connect";  // action list
+  permission java.net.SocketPermission "*:80", 
+    "connect";
+};
+

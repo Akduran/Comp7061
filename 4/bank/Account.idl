@@ -1,0 +1,14 @@
+// Account.idl
+module lab4 {
+  enum AccountType { checking, savings };
+
+  interface Account {
+    readonly attribute float balance;
+    readonly attribute AccountType  type;
+    attribute string name;
+
+    void deposit(in float amount);
+    boolean withdraw(in float amount);
+  };
+};
+

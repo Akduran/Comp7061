@@ -1,0 +1,41 @@
+#ifndef BANKING_IDL
+#define BANKING_IDL
+
+module banking {
+  typedef float Money;
+
+  struct Address {
+    string street;
+    string city;
+    string state;
+  };
+
+  interface User;  // forward declaration
+
+  enum AccountType { CHECKING, SAVINGS };
+
+  exception InvalidAmount { string reason; };
+  exception InvalidAccount { string reason; };
+
+  interface Account {
+    attribute User                  owner;
+    readonly attribute AccountType  type;
+    readonly attribute Money        balance;
+
+    void deposit(in float amount);
+    void withdraw(in float amount) raises (InvalidAmount);
+  };
+
+  typedef sequence<Account>  Accounts;  // variable-length list
+
+  interface User {
+    attribute string             lastname;
+    attribute string             firstname;
+    attribute Address            address;
+    readonly attribute string    id;
+    readonly attribute Accounts  accounts;    
+
+    void addAccount(in Account account) raises (InvalidAccount);
+  };
+};
+#endif

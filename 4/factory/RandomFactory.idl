@@ -1,0 +1,7 @@
+// RandomFactory.idl 
+#include "Random.idl"
+
+interface RandomFactory {
+  Random create(in unsigned long max);
+};
+

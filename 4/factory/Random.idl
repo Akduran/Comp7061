@@ -1,0 +1,4 @@
+interface Random {
+  unsigned long get();
+};
+
